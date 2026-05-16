@@ -2,27 +2,52 @@ import sys
 sys.path.append(".")
 
 from textilecalc import *
+from colorama import Fore, Style, init
+
+init(autoreset=True)
 
 
 # ================================
-# SAFE INPUT HANDLER
+# FULL FORMS
+# ================================
+TEXTILE_FULL_FORM = {
+    "Ne": "English Cotton Count",
+    "Tex": "Tex (g per 1000m)",
+    "Denier": "Denier (g per 9000m)",
+    "CV%": "Coefficient of Variation",
+    "CSP": "Count Strength Product",
+    "GSM": "Gram per Square Meter",
+    "EPI": "Ends Per Inch",
+    "PPI": "Picks Per Inch"
+}
+
+
+# ================================
+# INPUT HANDLER
 # ================================
 def get_float(prompt):
     while True:
         try:
-            value = float(input(prompt))
-            return value
+            return float(input(prompt))
         except ValueError:
-            print("❌ Invalid input! Please enter a numeric value.\n")
+            print(Fore.RED + "❌ Invalid input!")
 
 
 # ================================
-# HEADER DESIGN
+# HEADER
 # ================================
 def header(title):
-    print("\n" + "=" * 60)
-    print(f"        🧵 TEXTILE CALC TOOLKIT | {title}")
-    print("=" * 60)
+    print(Fore.CYAN + "\n" + "=" * 70)
+    print(Fore.YELLOW + Style.BRIGHT + f"🧵 TEXTILE CALC TOOLKIT | {title}")
+    print(Fore.CYAN + "=" * 70)
+
+
+# ================================
+# FULL FORM DISPLAY
+# ================================
+def show(term):
+    if term in TEXTILE_FULL_FORM:
+        print(Fore.MAGENTA + f"📘 {term} → {TEXTILE_FULL_FORM[term]}")
 
 
 # ================================
@@ -33,51 +58,46 @@ def yarn_menu():
         header("YARN CALCULATIONS")
 
         print("""
-1. Convert Ne → Tex (English Cotton Count to Linear Density)
-2. Convert Tex → Ne
-3. Convert Tex → Denier
-4. Calculate Coefficient of Variation (CV%)
-5. Calculate Count Strength Product (CSP)
-6. Back to Main Menu
+1. Ne → Tex
+2. Tex → Ne
+3. Tex → Denier
+4. CV%
+5. CSP
+6. Back
 """)
 
-        choice = input("👉 Enter your choice: ")
+        c = input("👉 ")
 
-        if choice == "1":
-            ne = get_float("Enter English Cotton Count (Ne): ")
-            tex = ne_to_tex(ne)
-            print(f"\n📌 Result: {ne} Ne = {tex:.2f} Tex (g/1000m)")
+        if c == "1":
+            show("Ne"); show("Tex")
+            ne = get_float("Ne: ")
+            print(Fore.GREEN + f"✔ {ne} Ne → {ne_to_tex(ne):.2f} Tex")
 
-        elif choice == "2":
-            tex = get_float("Enter Yarn Linear Density (Tex): ")
-            ne = tex_to_ne(tex)
-            print(f"\n📌 Result: {tex} Tex = {ne:.2f} Ne")
+        elif c == "2":
+            show("Tex"); show("Ne")
+            tex = get_float("Tex: ")
+            print(Fore.GREEN + f"✔ {tex} Tex → {tex_to_ne(tex):.2f} Ne")
 
-        elif choice == "3":
-            tex = get_float("Enter Yarn Linear Density (Tex): ")
-            denier = tex_to_denier(tex)
-            print(f"\n📌 Result: {tex} Tex = {denier:.2f} Denier (g/9000m)")
+        elif c == "3":
+            show("Tex"); show("Denier")
+            tex = get_float("Tex: ")
+            print(Fore.GREEN + f"✔ {tex} Tex → {tex_to_denier(tex):.2f} Denier")
 
-        elif choice == "4":
-            sd = get_float("Enter Standard Deviation: ")
-            mean = get_float("Enter Mean Value: ")
-            if mean <= 0:
-                print("❌ Mean value must be greater than 0")
-            else:
-                cv = cv_percentage(sd, mean)
-                print(f"\n📌 Coefficient of Variation (CV%) = {cv:.2f}%")
+        elif c == "4":
+            show("CV%")
+            sd = get_float("SD: ")
+            mean = get_float("Mean: ")
+            if mean > 0:
+                print(Fore.GREEN + f"✔ CV% = {cv_percentage(sd, mean):.2f}%")
 
-        elif choice == "5":
-            count = get_float("Enter Yarn Count: ")
-            strength = get_float("Enter Yarn Strength (lb): ")
-            csp_value = csp(count, strength)
-            print(f"\n📌 Count Strength Product (CSP) = {csp_value:.2f}")
+        elif c == "5":
+            show("CSP")
+            c1 = get_float("Count: ")
+            s = get_float("Strength: ")
+            print(Fore.GREEN + f"✔ CSP = {csp(c1, s):.2f}")
 
-        elif choice == "6":
+        elif c == "6":
             break
-
-        else:
-            print("❌ Invalid choice. Try again.")
 
 
 # ================================
@@ -88,43 +108,36 @@ def fabric_menu():
         header("FABRIC CALCULATIONS")
 
         print("""
-1. Fabric GSM (Gram per Square Meter)
-2. Total Fabric Weight
-3. Fabric Cover Factor
+1. GSM
+2. Fabric Weight
+3. Cover Factor
 4. Back
 """)
 
-        choice = input("👉 Enter your choice: ")
+        c = input("👉 ")
 
-        if choice == "1":
-            w = get_float("Fabric Weight (grams): ")
-            l = get_float("Length (meters): ")
-            b = get_float("Width (meters): ")
+        if c == "1":
+            show("GSM")
+            w = get_float("Weight: ")
+            l = get_float("Length: ")
+            b = get_float("Width: ")
+            print(Fore.GREEN + f"✔ GSM = {gsm(w,l,b):.2f}")
 
-            gsm_value = gsm(w, l, b)
-            print(f"\n📌 Fabric GSM = {gsm_value:.2f} g/m²")
+        elif c == "2":
+            g = get_float("GSM: ")
+            w = get_float("Width: ")
+            l = get_float("Length: ")
+            print(Fore.GREEN + f"✔ Weight = {fabric_weight(g,w,l):.2f} g")
 
-        elif choice == "2":
-            gsm_value = get_float("Fabric GSM (g/m²): ")
-            w = get_float("Width (m): ")
-            l = get_float("Length (m): ")
+        elif c == "3":
+            show("EPI"); show("PPI")
+            epi = get_float("EPI: ")
+            ppi = get_float("PPI: ")
+            c1 = get_float("Count: ")
+            print(Fore.GREEN + f"✔ Cover Factor = {cover_factor(epi,ppi,c1):.2f}")
 
-            weight = fabric_weight(gsm_value, w, l)
-            print(f"\n📌 Total Fabric Weight = {weight:.2f} grams")
-
-        elif choice == "3":
-            epi = get_float("Ends per Inch (EPI): ")
-            ppi = get_float("Picks per Inch (PPI): ")
-            count = get_float("Yarn Count: ")
-
-            cf = cover_factor(epi, ppi, count)
-            print(f"\n📌 Fabric Cover Factor = {cf:.2f}")
-
-        elif choice == "4":
+        elif c == "4":
             break
-
-        else:
-            print("❌ Invalid choice")
 
 
 # ================================
@@ -135,40 +148,31 @@ def dyeing_menu():
         header("DYEING CALCULATIONS")
 
         print("""
-1. Required Dye Amount
-2. Required Liquor Amount
-3. Required Chemical Amount
+1. Dye Required
+2. Liquor Required
+3. Chemical Required
 4. Back
 """)
 
-        choice = input("👉 Enter your choice: ")
+        c = input("👉 ")
 
-        if choice == "1":
-            weight = get_float("Fabric Weight (kg): ")
-            shade = get_float("Shade (%): ")
+        if c == "1":
+            w = get_float("Weight kg: ")
+            s = get_float("Shade %: ")
+            print(Fore.GREEN + f"✔ Dye = {dye_required(w,s):.2f} kg")
 
-            dye = dye_required(weight, shade)
-            print(f"\n📌 Required Dye = {dye:.2f} kg")
+        elif c == "2":
+            w = get_float("Weight kg: ")
+            r = get_float("Ratio: ")
+            print(Fore.GREEN + f"✔ Liquor = {liquor_required(w,r):.2f} L")
 
-        elif choice == "2":
-            weight = get_float("Material Weight (kg): ")
-            ratio = get_float("Liquor Ratio (e.g. 10 for 1:10): ")
+        elif c == "3":
+            w = get_float("Weight kg: ")
+            p = get_float("Chemical %: ")
+            print(Fore.GREEN + f"✔ Chemical = {chemical_required(w,p):.2f} kg")
 
-            liquor = liquor_required(weight, ratio)
-            print(f"\n📌 Required Liquor = {liquor:.2f} L")
-
-        elif choice == "3":
-            weight = get_float("Material Weight (kg): ")
-            percent = get_float("Chemical (%): ")
-
-            chem = chemical_required(weight, percent)
-            print(f"\n📌 Required Chemical = {chem:.2f} kg")
-
-        elif choice == "4":
+        elif c == "4":
             break
-
-        else:
-            print("❌ Invalid choice")
 
 
 # ================================
@@ -180,40 +184,162 @@ def costing_menu():
 
         print("""
 1. Yarn Cost
-2. Total Process Cost
-3. Selling Price with Profit
+2. Process Cost
+3. Selling Price
 4. Back
 """)
 
-        choice = input("👉 Enter your choice: ")
+        c = input("👉 ")
 
-        if choice == "1":
-            w = get_float("Yarn Weight (kg): ")
-            rate = get_float("Rate per kg: ")
+        if c == "1":
+            w = get_float("Weight: ")
+            r = get_float("Rate: ")
+            print(Fore.GREEN + f"✔ Cost = {yarn_cost(w,r):.2f}")
 
-            cost = yarn_cost(w, rate)
-            print(f"\n📌 Yarn Cost = {cost:.2f}")
+        elif c == "2":
+            m = get_float("Material: ")
+            l = get_float("Labor: ")
+            o = get_float("Overhead: ")
+            print(Fore.GREEN + f"✔ Total = {process_cost(m,l,o):.2f}")
 
-        elif choice == "2":
-            mat = get_float("Material Cost: ")
-            labor = get_float("Labor Cost: ")
-            overhead = get_float("Overhead Cost: ")
+        elif c == "3":
+            c1 = get_float("Cost: ")
+            p = get_float("Profit %: ")
+            print(Fore.GREEN + f"✔ Price = {profit_price(c1,p):.2f}")
 
-            total = process_cost(mat, labor, overhead)
-            print(f"\n📌 Total Process Cost = {total:.2f}")
-
-        elif choice == "3":
-            cost = get_float("Total Cost: ")
-            profit = get_float("Profit %: ")
-
-            price = profit_price(cost, profit)
-            print(f"\n📌 Selling Price = {price:.2f}")
-
-        elif choice == "4":
+        elif c == "4":
             break
 
-        else:
-            print("❌ Invalid choice")
+
+# ================================
+# PRODUCTION MENU
+# ================================
+def production_menu():
+    while True:
+        header("PRODUCTION")
+
+        print("""
+1. Efficiency
+2. Production Rate
+3. Machine Utilization
+4. Back
+""")
+
+        c = input("👉 ")
+
+        if c == "1":
+            a = get_float("Actual: ")
+            t = get_float("Target: ")
+            print(Fore.GREEN + f"✔ Efficiency = {efficiency(a,t):.2f}%")
+
+        elif c == "2":
+            o = get_float("Output: ")
+            h = get_float("Hours: ")
+            print(Fore.GREEN + f"✔ Rate = {production_rate(o,h):.2f}/hr")
+
+        elif c == "3":
+            r = get_float("Run Time: ")
+            a = get_float("Available: ")
+            print(Fore.GREEN + f"✔ Utilization = {machine_utilization(r,a):.2f}%")
+
+
+        elif c == "4":
+            break
+
+
+# ================================
+# WASTAGE MENU
+# ================================
+def wastage_menu():
+    while True:
+        header("WASTAGE")
+
+        print("""
+1. Wastage %
+2. Back
+""")
+
+        c = input("👉 ")
+
+        if c == "1":
+            i = get_float("Input: ")
+            o = get_float("Output: ")
+            print(Fore.GREEN + f"✔ Wastage = {wastage_percentage(i,o):.2f}%")
+
+        elif c == "2":
+            break
+
+
+# ================================
+# UNIT CONVERSION MENU
+# ================================
+def unit_menu():
+    while True:
+        header("UNIT CONVERSION")
+
+        print("""
+1. Kg → Lb
+2. Lb → Kg
+3. Inch → Meter
+4. Meter → Inch
+5. GSM → Oz/yd²
+6. Back
+""")
+
+        c = input("👉 ")
+
+        if c == "1":
+            print(kg_to_lbs(get_float("Kg: ")))
+
+        elif c == "2":
+            print(lbs_to_kg(get_float("Lb: ")))
+
+        elif c == "3":
+            print(inch_to_meter(get_float("Inch: ")))
+
+        elif c == "4":
+            print(meter_to_inch(get_float("Meter: ")))
+
+        elif c == "5":
+            print(gsm_to_oz_yd2(get_float("GSM: ")))
+
+        elif c == "6":
+            break
+
+
+# ================================
+# QUALITY CONTROL MENU
+# ================================
+def qc_menu():
+    while True:
+        header("QUALITY CONTROL")
+
+        print("""
+1. Moisture Regain
+2. Shrinkage %
+3. Absorbency Rate
+4. Back
+""")
+
+        c = input("👉 ")
+
+        if c == "1":
+            o = get_float("Original: ")
+            d = get_float("Dry: ")
+            print(Fore.GREEN + f"✔ Moisture = {moisture_regain(o,d):.2f}%")
+
+        elif c == "2":
+            o = get_float("Original: ")
+            f = get_float("Final: ")
+            print(Fore.GREEN + f"✔ Shrinkage = {shrinkage_percent(o,f):.2f}%")
+
+        elif c == "3":
+            w = get_float("Water: ")
+            d = get_float("Dry: ")
+            print(Fore.GREEN + f"✔ Absorbency = {absorbency_rate(w,d):.2f}%")
+
+        elif c == "4":
+            break
 
 
 # ================================
@@ -224,28 +350,38 @@ def main():
         header("MAIN MENU")
 
         print("""
-1. Yarn Calculations
-2. Fabric Calculations
-3. Dyeing Calculations
-4. Costing Calculations
-5. Exit
+1. Yarn
+2. Fabric
+3. Dyeing
+4. Costing
+5. Production
+6. Wastage
+7. Unit Conversion
+8. Quality Control
+9. Exit
 """)
 
-        choice = input("👉 Enter your choice: ")
+        c = input("👉 ")
 
-        if choice == "1":
+        if c == "1":
             yarn_menu()
-        elif choice == "2":
+        elif c == "2":
             fabric_menu()
-        elif choice == "3":
+        elif c == "3":
             dyeing_menu()
-        elif choice == "4":
+        elif c == "4":
             costing_menu()
-        elif choice == "5":
-            print("\n👋 Exiting TextileCalc Toolkit... Goodbye!")
+        elif c == "5":
+            production_menu()
+        elif c == "6":
+            wastage_menu()
+        elif c == "7":
+            unit_menu()
+        elif c == "8":
+            qc_menu()
+        elif c == "9":
+            print(Fore.YELLOW + "👋 Exiting Toolkit...")
             break
-        else:
-            print("❌ Invalid choice. Try again.")
 
 
 if __name__ == "__main__":
