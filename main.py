@@ -332,30 +332,203 @@ def qc_menu():
 # ================================
 # NEW INDUSTRY MODULES
 # ================================
+
+# ===== Spinning =====
 def spinning_menu():
-    header("SPINNING MODULE")
-    print("Advanced spinning calculations available in module.")
+    while True:
+        header("SPINNING CALCULATIONS")
+
+        print("""
+1. Yarn Twist (TPI)
+2. Yarn Twist (TPM)
+3. Imperfection Index
+4. Spinning Efficiency
+5. Back
+""")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            twist = get_float("Twist: ")
+            length = get_float("Length: ")
+            print(f"TPI = {yarn_twist_tpi(twist, length):.2f}")
+
+        elif choice == "2":
+            tpi = get_float("TPI: ")
+            print(f"TPM = {yarn_tpm(tpi):.2f}")
+
+        elif choice == "3":
+            u = get_float("U%: ")
+            thin = get_float("Thin places: ")
+            thick = get_float("Thick places: ")
+            neps = get_float("Neps: ")
+            print(f"Imperfection Index = {yarn_imperfection(u, thin, thick, neps):.2f}")
+
+        elif choice == "4":
+            actual = get_float("Actual Output: ")
+            theoretical = get_float("Theoretical Output: ")
+            print(f"Efficiency = {spinning_efficiency(actual, theoretical):.2f}%")
+
+        elif choice == "5":
+            break
 
 
+# ===== Weaving =====
 def weaving_menu():
-    header("WEAVING MODULE")
-    print("Weaving calculations available in module.")
+    while True:
+        header("WEAVING CALCULATIONS")
 
+        print("""
+1. Loom Efficiency
+2. Warp Break Rate
+3. Weft Break Rate
+4. Fabric Defect Rate
+5. Back
+""")
+
+        c = input("Enter choice: ")
+
+        if c == "1":
+            actual = get_float("Actual Output: ")
+            ideal = get_float("Ideal Output: ")
+            print(f"Efficiency = {loom_efficiency(actual, ideal):.2f}%")
+
+        elif c == "2":
+            breaks = get_float("Warp breaks: ")
+            ends = get_float("Total ends: ")
+            print(f"Warp Break Rate = {warp_break_rate(breaks, ends):.2f}%")
+
+        elif c == "3":
+            breaks = get_float("Weft breaks: ")
+            picks = get_float("Picks: ")
+            print(f"Weft Break Rate = {weft_break_rate(breaks, picks):.2f}%")
+
+        elif c == "4":
+            defects = get_float("Defects: ")
+            length = get_float("Length: ")
+            print(f"Defect Rate = {fabric_defect_rate(defects, length):.2f}%")
+
+        elif c == "5":
+            break
+
+
+# ===== Advance Dyeing =====
 
 def dyeing_advanced_menu():
-    header("ADVANCED DYEING")
-    print("Advanced dyeing calculations available.")
+    while True:
+        header("ADVANCED DYEING")
+
+        print("""
+1. Dye Exhaustion
+2. Dye Fixation
+3. Liquor Ratio
+4. Chemical Utilization
+5. Back
+""")
+
+        c = input("Enter choice: ")
+
+        if c == "1":
+            initial = get_float("Initial dye: ")
+            remaining = get_float("Remaining dye: ")
+            print(f"Exhaustion = {dye_exhaustion(initial, remaining):.2f}%")
+
+        elif c == "2":
+            fixed = get_float("Fixed dye: ")
+            applied = get_float("Applied dye: ")
+            print(f"Fixation = {dye_fixation(fixed, applied):.2f}%")
+
+        elif c == "3":
+            m = get_float("Material: ")
+            l = get_float("Liquor: ")
+            print(f"Liquor Ratio = {liquor_ratio(m, l):.2f}")
+
+        elif c == "4":
+            a = get_float("Actual: ")
+            t = get_float("Theoretical: ")
+            print(f"Utilization = {chemical_utilization(a, t):.2f}%")
+
+        elif c == "5":
+            break
 
 
+# ===== Testing =====
 def testing_menu():
-    header("TEXTILE TESTING")
-    print("Testing lab calculations available.")
+    while True:
+        header("TEXTILE TESTING LAB")
+
+        print("""
+1. Tensile Strength
+2. Elongation %
+3. Bursting Strength
+4. Abrasion Index
+5. Back
+""")
+
+        c = input("Enter choice: ")
+
+        if c == "1":
+            f = get_float("Force: ")
+            a = get_float("Area: ")
+            print(f"Tensile Strength = {tensile_strength(f, a):.2f}")
+
+        elif c == "2":
+            f = get_float("Final length: ")
+            o = get_float("Original length: ")
+            print(f"Elongation = {elongation_percent(f, o):.2f}%")
+
+        elif c == "3":
+            f = get_float("Force: ")
+            a = get_float("Area: ")
+            print(f"Bursting Strength = {bursting_strength(f, a):.2f}")
+
+        elif c == "4":
+            loss = get_float("Loss weight: ")
+            init = get_float("Initial weight: ")
+            print(f"Abrasion Index = {abrasion_index(loss, init):.2f}%")
+
+        elif c == "5":
+            break
 
 
+# ===== Costing =====
 def costing_advanced_menu():
-    header("ADVANCED COSTING")
-    print("Advanced costing calculations available.")
+    while True:
+        header("ADVANCED COSTING")
 
+        print("""
+1. Cost per Meter
+2. Energy Cost
+3. Machine Depreciation
+4. Profit Margin
+5. Back
+""")
+
+        c = input("Enter choice: ")
+
+        if c == "1":
+            cost = get_float("Total cost: ")
+            length = get_float("Length: ")
+            print(f"Cost per Meter = {cost_per_meter(cost, length):.2f}")
+
+        elif c == "2":
+            power = get_float("Power (kW): ")
+            hours = get_float("Hours: ")
+            rate = get_float("Rate: ")
+            print(f"Energy Cost = {energy_cost(power, hours, rate):.2f}")
+
+        elif c == "3":
+            mc = get_float("Machine cost: ")
+            life = get_float("Life (years): ")
+            print(f"Depreciation = {depreciation(mc, life):.2f}")
+
+        elif c == "4":
+            sp = get_float("Selling price: ")
+            cp = get_float("Cost price: ")
+            print(f"Profit Margin = {profit_margin(sp, cp):.2f}%")
+
+        elif c == "5":
+            break
 
 # ================================
 # MAIN MENU
