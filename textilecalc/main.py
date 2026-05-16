@@ -1,4 +1,4 @@
-from textile import *
+from textilecalc import *
 
 def main():
     while True:
