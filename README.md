@@ -35,8 +35,14 @@ use :
    python main.py
    from textilecalc import gsm
 
-# Then they can use your math in their own software!
-my_gsm = gsm(10, 5, 5)
-print(my_gsm)
+   from textilecalc import gsm, ne_to_tex
+
+# Calculate GSM
+fabric_gsm = gsm(weight=5.2, length=10, width=10)
+print(f"Fabric GSM: {fabric_gsm}")
+
+# Convert Ne to Tex
+tex_count = ne_to_tex(30)
+print(f"30 Ne is equivalent to {tex_count} Tex")
 
 
