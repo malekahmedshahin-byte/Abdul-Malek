@@ -30,3 +30,13 @@ use :
 [https://github.com/malekahmedshahin-byte/Abdul-Malek.git]
    %cd Abdul-Malek
    !python main.py
+
+```bash
+   python main.py
+   from textilecalc import gsm
+
+# Then they can use your math in their own software!
+my_gsm = gsm(10, 5, 5)
+print(my_gsm)
+
+
