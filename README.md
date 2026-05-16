@@ -20,12 +20,13 @@ The interactive toolkit includes multiple industry-specific modules:
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/malekahmedshahin-byte/Abdul-Malek.git](https://github.com/malekahmedshahin-byte/Abdul-Malek.git)
+   git clone [https://github.com/malekahmedshahin-byte/Abdul-Malek.git]
    cd Abdul-Malek
 
 For colab user or Jupyter notebook 
-use 
-!git clone [https://github.com/malekahmedshahin-byte/Abdul-Malek.git]
-%cd Abdul-Malek
-and then
-!python main.py
+use :
+```bash
+   !git clone
+[https://github.com/malekahmedshahin-byte/Abdul-Malek.git]
+   %cd Abdul-Malek
+   !python main.py
