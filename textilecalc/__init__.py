@@ -6,3 +6,9 @@ from .production import *
 from .wastage import *
 from .unit_conv import *
 from .qc import *
+# NEW INDUSTRY MODULES
+from .spinning import *
+from .weaving import *
+from .dyeing_advanced import *
+from .testing import *
+from .costing_advanced import *
