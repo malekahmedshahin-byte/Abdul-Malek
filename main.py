@@ -4,332 +4,332 @@ sys.path.append(".")
 from textilecalc import *
 
 
-# =========================
-# YARN MENU
-# =========================
+# =========================================
+# YARN CALCULATIONS MENU
+# =========================================
 def yarn_menu():
     while True:
-        print("\n--- YARN CALCULATIONS ---")
-        print("1. Ne to Tex")
-        print("2. Tex to Ne")
-        print("3. Tex to Denier")
-        print("4. CV%")
-        print("5. CSP")
-        print("6. Back")
+        print("\n========== YARN CALCULATIONS ==========")
+        print("1. Convert English Cotton Count (Ne) to Tex")
+        print("2. Convert Tex to English Cotton Count (Ne)")
+        print("3. Convert Tex to Denier")
+        print("4. Calculate Coefficient of Variation (CV%)")
+        print("5. Calculate Count Strength Product (CSP)")
+        print("6. Back to Main Menu")
 
-        choice = input("Enter choice: ")
+        choice = input("Enter your choice: ")
 
         try:
             if choice == "1":
-                ne = float(input("Enter Ne: "))
-                print("Tex =", ne_to_tex(ne))
+                english_count_ne = float(input("Enter English Cotton Count (Ne): "))
+                print("Yarn Linear Density =", ne_to_tex(english_count_ne), "Tex")
 
             elif choice == "2":
-                tex = float(input("Enter Tex: "))
-                print("Ne =", tex_to_ne(tex))
+                yarn_tex = float(input("Enter Yarn Linear Density (Tex): "))
+                print("English Cotton Count =", tex_to_ne(yarn_tex), "Ne")
 
             elif choice == "3":
-                tex = float(input("Enter Tex: "))
-                print("Denier =", tex_to_denier(tex))
+                yarn_tex = float(input("Enter Yarn Linear Density (Tex): "))
+                print("Yarn Count =", tex_to_denier(yarn_tex), "Denier")
 
             elif choice == "4":
-                sd = float(input("Enter Standard Deviation: "))
-                mean = float(input("Enter Mean: "))
-                print("CV% =", cv_percentage(sd, mean))
+                standard_deviation = float(input("Enter Standard Deviation: "))
+                mean_value = float(input("Enter Mean Value: "))
+                print("Coefficient of Variation =", cv_percentage(standard_deviation, mean_value), "%")
 
             elif choice == "5":
-                count = float(input("Enter Count: "))
-                strength = float(input("Enter Strength: "))
-                print("CSP =", csp(count, strength))
+                yarn_count = float(input("Enter Yarn Count: "))
+                yarn_strength = float(input("Enter Yarn Strength (lb): "))
+                print("Count Strength Product =", csp(yarn_count, yarn_strength))
 
             elif choice == "6":
                 break
 
             else:
-                print("Invalid choice.")
+                print("Invalid choice. Please try again.")
 
         except Exception as e:
             print("Error:", e)
 
 
-# =========================
-# FABRIC MENU
-# =========================
+# =========================================
+# FABRIC CALCULATIONS MENU
+# =========================================
 def fabric_menu():
     while True:
-        print("\n--- FABRIC CALCULATIONS ---")
-        print("1. GSM")
-        print("2. Fabric Weight")
-        print("3. Cover Factor")
-        print("4. Back")
+        print("\n========== FABRIC CALCULATIONS ==========")
+        print("1. Calculate Fabric GSM (Gram per Square Meter)")
+        print("2. Calculate Total Fabric Weight")
+        print("3. Calculate Fabric Cover Factor")
+        print("4. Back to Main Menu")
 
-        choice = input("Enter choice: ")
+        choice = input("Enter your choice: ")
 
         try:
             if choice == "1":
-                weight = float(input("Weight (g): "))
-                length = float(input("Length (m): "))
-                width = float(input("Width (m): "))
-                print("GSM =", gsm(weight, length, width))
+                fabric_weight_grams = float(input("Enter Fabric Weight (grams): "))
+                fabric_length_meters = float(input("Enter Fabric Length (meters): "))
+                fabric_width_meters = float(input("Enter Fabric Width (meters): "))
+                print("Fabric GSM =", gsm(fabric_weight_grams, fabric_length_meters, fabric_width_meters), "g/m²")
 
             elif choice == "2":
-                gsm_val = float(input("Enter GSM: "))
-                width = float(input("Width (m): "))
-                length = float(input("Length (m): "))
-                print("Fabric Weight =", fabric_weight(gsm_val, width, length))
+                fabric_gsm = float(input("Enter Fabric GSM (g/m²): "))
+                fabric_width_meters = float(input("Enter Fabric Width (meters): "))
+                fabric_length_meters = float(input("Enter Fabric Length (meters): "))
+                print("Total Fabric Weight =", fabric_weight(fabric_gsm, fabric_width_meters, fabric_length_meters), "grams")
 
             elif choice == "3":
-                ends = float(input("Ends: "))
-                picks = float(input("Picks: "))
-                count = float(input("Count: "))
-                print("Cover Factor =", cover_factor(ends, picks, count))
+                ends_per_inch = float(input("Enter Ends per Inch (EPI): "))
+                picks_per_inch = float(input("Enter Picks per Inch (PPI): "))
+                yarn_count = float(input("Enter Yarn Count: "))
+                print("Fabric Cover Factor =", cover_factor(ends_per_inch, picks_per_inch, yarn_count))
 
             elif choice == "4":
                 break
 
             else:
-                print("Invalid choice.")
+                print("Invalid choice. Please try again.")
 
         except Exception as e:
             print("Error:", e)
 
 
-# =========================
-# DYEING MENU
-# =========================
+# =========================================
+# DYEING CALCULATIONS MENU
+# =========================================
 def dyeing_menu():
     while True:
-        print("\n--- DYEING CALCULATIONS ---")
-        print("1. Dye Required")
-        print("2. Liquor Required")
-        print("3. Chemical Required")
-        print("4. Back")
+        print("\n========== DYEING CALCULATIONS ==========")
+        print("1. Calculate Required Dye Amount")
+        print("2. Calculate Required Liquor Amount")
+        print("3. Calculate Required Chemical Amount")
+        print("4. Back to Main Menu")
 
-        choice = input("Enter choice: ")
+        choice = input("Enter your choice: ")
 
         try:
             if choice == "1":
-                fw = float(input("Fabric Weight (kg): "))
-                shade = float(input("Shade %: "))
-                print("Dye Required =", dye_required(fw, shade), "kg")
+                fabric_weight_kg = float(input("Enter Fabric Weight (kg): "))
+                shade_percentage = float(input("Enter Shade Percentage (%): "))
+                print("Required Dye =", dye_required(fabric_weight_kg, shade_percentage), "kg")
 
             elif choice == "2":
-                mw = float(input("Material Weight (kg): "))
-                mlr = float(input("MLR: "))
-                print("Liquor Required =", liquor_required(mw, mlr))
+                material_weight_kg = float(input("Enter Material Weight (kg): "))
+                material_liquor_ratio = float(input("Enter Material to Liquor Ratio (example: 10 for 1:10): "))
+                print("Required Liquor =", liquor_required(material_weight_kg, material_liquor_ratio), "liters")
 
             elif choice == "3":
-                mw = float(input("Material Weight (kg): "))
-                percent = float(input("Chemical %: "))
-                print("Chemical Required =", chemical_required(mw, percent))
+                material_weight_kg = float(input("Enter Material Weight (kg): "))
+                chemical_percentage = float(input("Enter Chemical Percentage (%): "))
+                print("Required Chemical =", chemical_required(material_weight_kg, chemical_percentage), "kg")
 
             elif choice == "4":
                 break
 
             else:
-                print("Invalid choice.")
+                print("Invalid choice. Please try again.")
 
         except Exception as e:
             print("Error:", e)
 
 
-# =========================
-# COSTING MENU
-# =========================
+# =========================================
+# COSTING CALCULATIONS MENU
+# =========================================
 def costing_menu():
     while True:
-        print("\n--- COSTING CALCULATIONS ---")
-        print("1. Yarn Cost")
-        print("2. Process Cost")
-        print("3. Profit Price")
-        print("4. Back")
+        print("\n========== COSTING CALCULATIONS ==========")
+        print("1. Calculate Yarn Cost")
+        print("2. Calculate Total Process Cost")
+        print("3. Calculate Selling Price with Profit")
+        print("4. Back to Main Menu")
 
-        choice = input("Enter choice: ")
+        choice = input("Enter your choice: ")
 
         try:
             if choice == "1":
-                weight = float(input("Weight: "))
-                rate = float(input("Rate: "))
-                print("Yarn Cost =", yarn_cost(weight, rate))
+                yarn_weight_kg = float(input("Enter Yarn Weight (kg): "))
+                yarn_rate_per_kg = float(input("Enter Yarn Rate per kg: "))
+                print("Total Yarn Cost =", yarn_cost(yarn_weight_kg, yarn_rate_per_kg))
 
             elif choice == "2":
-                material = float(input("Material Cost: "))
-                labor = float(input("Labor Cost: "))
-                overhead = float(input("Overhead: "))
-                print("Process Cost =", process_cost(material, labor, overhead))
+                material_cost = float(input("Enter Material Cost: "))
+                labor_cost = float(input("Enter Labor Cost: "))
+                overhead_cost = float(input("Enter Overhead Cost: "))
+                print("Total Process Cost =", process_cost(material_cost, labor_cost, overhead_cost))
 
             elif choice == "3":
-                total = float(input("Total Cost: "))
-                profit = float(input("Profit %: "))
-                print("Profit Price =", profit_price(total, profit))
+                total_cost = float(input("Enter Total Cost: "))
+                profit_percentage = float(input("Enter Profit Percentage (%): "))
+                print("Final Selling Price =", profit_price(total_cost, profit_percentage))
 
             elif choice == "4":
                 break
 
             else:
-                print("Invalid choice.")
+                print("Invalid choice. Please try again.")
 
         except Exception as e:
             print("Error:", e)
 
 
-# =========================
-# PRODUCTION MENU
-# =========================
+# =========================================
+# PRODUCTION CALCULATIONS MENU
+# =========================================
 def production_menu():
     while True:
-        print("\n--- PRODUCTION CALCULATIONS ---")
-        print("1. Efficiency")
-        print("2. Production Rate")
-        print("3. Machine Utilization")
-        print("4. Back")
+        print("\n========== PRODUCTION CALCULATIONS ==========")
+        print("1. Calculate Production Efficiency")
+        print("2. Calculate Production Rate")
+        print("3. Calculate Machine Utilization")
+        print("4. Back to Main Menu")
 
-        choice = input("Enter choice: ")
+        choice = input("Enter your choice: ")
 
         try:
             if choice == "1":
-                actual = float(input("Actual Production: "))
-                target = float(input("Target Production: "))
-                print("Efficiency =", efficiency(actual, target), "%")
+                actual_production = float(input("Enter Actual Production Quantity: "))
+                target_production = float(input("Enter Target Production Quantity: "))
+                print("Production Efficiency =", efficiency(actual_production, target_production), "%")
 
             elif choice == "2":
-                output = float(input("Output: "))
-                hours = float(input("Hours: "))
-                print("Production Rate =", production_rate(output, hours))
+                total_output = float(input("Enter Total Output Quantity: "))
+                production_hours = float(input("Enter Total Production Hours: "))
+                print("Production Rate =", production_rate(total_output, production_hours), "units/hour")
 
             elif choice == "3":
-                run = float(input("Run Time: "))
-                available = float(input("Available Time: "))
-                print("Machine Utilization =", machine_utilization(run, available), "%")
+                machine_run_time = float(input("Enter Machine Run Time (hours): "))
+                available_time = float(input("Enter Total Available Time (hours): "))
+                print("Machine Utilization =", machine_utilization(machine_run_time, available_time), "%")
 
             elif choice == "4":
                 break
 
             else:
-                print("Invalid choice.")
+                print("Invalid choice. Please try again.")
 
         except Exception as e:
             print("Error:", e)
 
 
-# =========================
-# WASTAGE MENU
-# =========================
+# =========================================
+# WASTAGE CALCULATIONS MENU
+# =========================================
 def wastage_menu():
     while True:
-        print("\n--- WASTAGE CALCULATIONS ---")
-        print("1. Wastage Percentage")
-        print("2. Back")
+        print("\n========== WASTAGE CALCULATIONS ==========")
+        print("1. Calculate Wastage Percentage")
+        print("2. Back to Main Menu")
 
-        choice = input("Enter choice: ")
+        choice = input("Enter your choice: ")
 
         try:
             if choice == "1":
-                inp = float(input("Input Weight: "))
-                out = float(input("Output Weight: "))
-                print("Wastage =", wastage_percentage(inp, out), "%")
+                input_weight_kg = float(input("Enter Input Material Weight (kg): "))
+                output_weight_kg = float(input("Enter Output Material Weight (kg): "))
+                print("Wastage Percentage =", wastage_percentage(input_weight_kg, output_weight_kg), "%")
 
             elif choice == "2":
                 break
 
             else:
-                print("Invalid choice.")
+                print("Invalid choice. Please try again.")
 
         except Exception as e:
             print("Error:", e)
 
 
-# =========================
+# =========================================
 # UNIT CONVERSION MENU
-# =========================
+# =========================================
 def unit_menu():
     while True:
-        print("\n--- UNIT CONVERSIONS ---")
-        print("1. KG to LBS")
-        print("2. LBS to KG")
+        print("\n========== UNIT CONVERSIONS ==========")
+        print("1. Kilogram to Pound")
+        print("2. Pound to Kilogram")
         print("3. Inch to Meter")
         print("4. Meter to Inch")
-        print("5. GSM to Oz/yd²")
-        print("6. Back")
+        print("5. GSM to Ounce per Square Yard")
+        print("6. Back to Main Menu")
 
-        choice = input("Enter choice: ")
+        choice = input("Enter your choice: ")
 
         try:
             if choice == "1":
-                kg = float(input("Enter KG: "))
-                print("LBS =", kg_to_lbs(kg))
+                kilogram_value = float(input("Enter Weight (kg): "))
+                print("Weight =", kg_to_lbs(kilogram_value), "lb")
 
             elif choice == "2":
-                lbs = float(input("Enter LBS: "))
-                print("KG =", lbs_to_kg(lbs))
+                pound_value = float(input("Enter Weight (lb): "))
+                print("Weight =", lbs_to_kg(pound_value), "kg")
 
             elif choice == "3":
-                inch = float(input("Enter Inch: "))
-                print("Meter =", inch_to_meter(inch))
+                inch_value = float(input("Enter Length (inch): "))
+                print("Length =", inch_to_meter(inch_value), "meter")
 
             elif choice == "4":
-                meter = float(input("Enter Meter: "))
-                print("Inch =", meter_to_inch(meter))
+                meter_value = float(input("Enter Length (meter): "))
+                print("Length =", meter_to_inch(meter_value), "inch")
 
             elif choice == "5":
-                gsm_val = float(input("Enter GSM: "))
-                print("Oz/yd² =", gsm_to_oz_yd2(gsm_val))
+                gsm_value = float(input("Enter Fabric GSM (g/m²): "))
+                print("Fabric Weight =", gsm_to_oz_yd2(gsm_value), "oz/yd²")
 
             elif choice == "6":
                 break
 
             else:
-                print("Invalid choice.")
+                print("Invalid choice. Please try again.")
 
         except Exception as e:
             print("Error:", e)
 
 
-# =========================
-# QC MENU
-# =========================
+# =========================================
+# QUALITY CONTROL MENU
+# =========================================
 def qc_menu():
     while True:
-        print("\n--- QC CALCULATIONS ---")
-        print("1. Moisture Regain")
-        print("2. Shrinkage %")
-        print("3. Absorbency Rate")
-        print("4. Back")
+        print("\n========== QUALITY CONTROL CALCULATIONS ==========")
+        print("1. Calculate Moisture Regain")
+        print("2. Calculate Shrinkage Percentage")
+        print("3. Calculate Absorbency Rate")
+        print("4. Back to Main Menu")
 
-        choice = input("Enter choice: ")
+        choice = input("Enter your choice: ")
 
         try:
             if choice == "1":
-                orig = float(input("Original Weight: "))
-                dry = float(input("Dry Weight: "))
-                print("Moisture Regain =", moisture_regain(orig, dry), "%")
+                original_weight = float(input("Enter Original Weight (grams or kg): "))
+                dry_weight = float(input("Enter Dry Weight (same unit): "))
+                print("Moisture Regain =", moisture_regain(original_weight, dry_weight), "%")
 
             elif choice == "2":
-                orig = float(input("Original Dimension: "))
-                final = float(input("Final Dimension: "))
-                print("Shrinkage % =", shrinkage_percent(orig, final), "%")
+                original_dimension = float(input("Enter Original Dimension (cm/meter): "))
+                final_dimension = float(input("Enter Final Dimension (same unit): "))
+                print("Shrinkage Percentage =", shrinkage_percent(original_dimension, final_dimension), "%")
 
             elif choice == "3":
-                water = float(input("Water Absorbed: "))
-                dry = float(input("Dry Weight: "))
-                print("Absorbency Rate =", absorbency_rate(water, dry), "%")
+                absorbed_water_weight = float(input("Enter Absorbed Water Weight: "))
+                dry_weight = float(input("Enter Dry Weight: "))
+                print("Absorbency Rate =", absorbency_rate(absorbed_water_weight, dry_weight), "%")
 
             elif choice == "4":
                 break
 
             else:
-                print("Invalid choice.")
+                print("Invalid choice. Please try again.")
 
         except Exception as e:
             print("Error:", e)
 
 
-# =========================
+# =========================================
 # MAIN MENU
-# =========================
+# =========================================
 def main():
     while True:
-        print("\n===== TEXTILECALC TOOLKIT =====")
+        print("\n================ TEXTILECALC TOOLKIT ================")
         print("1. Yarn Calculations")
         print("2. Fabric Calculations")
         print("3. Dyeing Calculations")
@@ -337,10 +337,10 @@ def main():
         print("5. Production Calculations")
         print("6. Wastage Calculations")
         print("7. Unit Conversions")
-        print("8. QC Calculations")
+        print("8. Quality Control Calculations")
         print("9. Exit")
 
-        choice = input("Enter choice: ")
+        choice = input("Enter your choice: ")
 
         if choice == "1":
             yarn_menu()
@@ -371,7 +371,7 @@ def main():
             break
 
         else:
-            print("Invalid choice.")
+            print("Invalid choice. Please try again.")
 
 
 if __name__ == "__main__":
