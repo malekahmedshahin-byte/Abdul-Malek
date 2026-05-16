@@ -65,26 +65,26 @@ def yarn_menu():
         c = input("Choice: ")
 
         if c == "1":
-            ne = get_float("Ne: ")
-            print(ne_to_tex(ne))
+            ne = get_float("Enter Count (Ne): ")
+            print(f"Result = {ne_to_tex(ne)} Tex")
 
         elif c == "2":
-            tex = get_float("Tex: ")
-            print(tex_to_ne(tex))
+            tex = get_float("Enter Count (Tex): ")
+            print(f"Result = {tex_to_ne(tex)} Ne")
 
         elif c == "3":
-            tex = get_float("Tex: ")
-            print(tex_to_denier(tex))
+            tex = get_float("Enter Count (Tex): ")
+            print(f"Result = {tex_to_denier(tex)} Denier")
 
         elif c == "4":
-            sd = get_float("SD: ")
-            mean = get_float("Mean: ")
-            print(cv_percentage(sd, mean))
+            sd = get_float("Enter Standard Deviation (SD): ")
+            mean = get_float("Enter Mean Value: ")
+            print(f"Result = {cv_percentage(sd, mean)} %")
 
         elif c == "5":
-            cval = get_float("Count: ")
-            strength = get_float("Strength: ")
-            print(csp(cval, strength))
+            cval = get_float("Enter Yarn Count (Ne): ")
+            strength = get_float("Enter Lea Strength (lbs): ")
+            print(f"Result = {csp(cval, strength)} CSP")
 
         elif c == "6":
             break
@@ -107,22 +107,22 @@ def fabric_menu():
         c = input("Choice: ")
 
         if c == "1":
-            w = get_float("Weight: ")
-            l = get_float("Length: ")
-            b = get_float("Width: ")
-            print(gsm(w, l, b))
+            w = get_float("Enter Sample Weight (g): ")
+            l = get_float("Enter Sample Length (cm): ")
+            b = get_float("Enter Sample Width (cm): ")
+            print(f"Result = {gsm(w, l, b)} GSM (g/m²)")
 
         elif c == "2":
-            g = get_float("GSM: ")
-            w = get_float("Width: ")
-            l = get_float("Length: ")
-            print(fabric_weight(g, w, l))
+            g = get_float("Enter Fabric GSM (g/m²): ")
+            w = get_float("Enter Fabric Width (meters): ")
+            l = get_float("Enter Fabric Length (meters): ")
+            print(f"Result = {fabric_weight(g, w, l)} grams")
 
         elif c == "3":
-            epi = get_float("EPI: ")
-            ppi = get_float("PPI: ")
-            cval = get_float("Count: ")
-            print(cover_factor(epi, ppi, cval))
+            epi = get_float("Enter EPI: ")
+            ppi = get_float("Enter PPI: ")
+            cval = get_float("Enter Yarn Count (Ne): ")
+            print(f"Result = {cover_factor(epi, ppi, cval)} (Total Cover Factor)")
 
         elif c == "4":
             break
@@ -145,19 +145,19 @@ def dyeing_menu():
         c = input("Choice: ")
 
         if c == "1":
-            w = get_float("Weight: ")
-            s = get_float("Shade %: ")
-            print(dye_required(w, s))
+            w = get_float("Enter Fabric/Yarn Weight (g): ")
+            s = get_float("Enter Shade (%): ")
+            print(f"Result = {dye_required(w, s)} grams")
 
         elif c == "2":
-            w = get_float("Weight: ")
-            r = get_float("Ratio: ")
-            print(liquor_required(w, r))
+            w = get_float("Enter Fabric/Yarn Weight (kg): ")
+            r = get_float("Enter Material liquor Ratio (1:X, enter X): ")
+            print(f"Result = {liquor_required(w, r)} Liters")
 
         elif c == "3":
-            w = get_float("Weight: ")
-            p = get_float("Percent: ")
-            print(chemical_required(w, p))
+            w = get_float("Enter Fabric/Yarn Weight (g): ")
+            p = get_float("Enter Chemical Percentage (%): ")
+            print(f"Result = {chemical_required(w, p)} grams")
 
         elif c == "4":
             break
@@ -180,20 +180,20 @@ def costing_menu():
         c = input("Choice: ")
 
         if c == "1":
-            w = get_float("Weight: ")
-            r = get_float("Rate: ")
-            print(yarn_cost(w, r))
+            w = get_float("Enter Yarn Weight (kg/lb): ")
+            r = get_float("Enter Rate per Unit Weight: ")
+            print(f"Result = {yarn_cost(w, r)} (Total Yarn Cost)")
 
         elif c == "2":
-            m = get_float("Material: ")
-            l = get_float("Labor: ")
-            o = get_float("Overhead: ")
-            print(process_cost(m, l, o))
+            m = get_float("Enter Material Cost: ")
+            l = get_float("Enter Labor Cost: ")
+            o = get_float("Enter Overhead Cost: ")
+            print(f"Result = {process_cost(m, l, o)} (Total Process Cost)")
 
         elif c == "3":
-            cst = get_float("Cost: ")
-            p = get_float("Profit %: ")
-            print(profit_price(cst, p))
+            cst = get_float("Enter Total Cost Price: ")
+            p = get_float("Enter Desired Profit (%): ")
+            print(f"Result = {profit_price(cst, p)} (Selling Price)")
 
         elif c == "4":
             break
@@ -216,19 +216,19 @@ def production_menu():
         c = input("Choice: ")
 
         if c == "1":
-            a = get_float("Actual: ")
-            t = get_float("Target: ")
-            print(efficiency(a, t))
+            a = get_float("Enter Actual Production: ")
+            t = get_float("Enter Target Production: ")
+            print(f"Result = {efficiency(a, t)} %")
 
         elif c == "2":
-            o = get_float("Output: ")
-            h = get_float("Hours: ")
-            print(production_rate(o, h))
+            o = get_float("Enter Total Output (kg/meter): ")
+            h = get_float("Enter Total Hours: ")
+            print(f"Result = {production_rate(o, h)} per hour")
 
         elif c == "3":
-            r = get_float("Run time: ")
-            a = get_float("Available: ")
-            print(machine_utilization(r, a))
+            r = get_float("Enter Machine Run Time (hours): ")
+            a = get_float("Enter Total Available Time (hours): ")
+            print(f"Result = {machine_utilization(r, a)} %")
 
         elif c == "4":
             break
@@ -249,9 +249,9 @@ def wastage_menu():
         c = input("Choice: ")
 
         if c == "1":
-            i = get_float("Input: ")
-            o = get_float("Output: ")
-            print(wastage_percentage(i, o))
+            i = get_float("Enter Input Material Weight: ")
+            o = get_float("Enter Output Material Weight: ")
+            print(f"Result = {wastage_percentage(i, o)} %")
 
         elif c == "2":
             break
@@ -276,19 +276,19 @@ def unit_menu():
         c = input("Choice: ")
 
         if c == "1":
-            print(kg_to_lbs(get_float("Kg: ")))
+            print(f"Result = {kg_to_lbs(get_float('Enter Weight in Kg: '))} Lbs")
 
         elif c == "2":
-            print(lbs_to_kg(get_float("Lb: ")))
+            print(f"Result = {lbs_to_kg(get_float('Enter Weight in Lb: '))} Kg")
 
         elif c == "3":
-            print(inch_to_meter(get_float("Inch: ")))
+            print(f"Result = {inch_to_meter(get_float('Enter Length in Inch: '))} Meters")
 
         elif c == "4":
-            print(meter_to_inch(get_float("Meter: ")))
+            print(f"Result = {meter_to_inch(get_float('Enter Length in Meter: '))} Inches")
 
         elif c == "5":
-            print(gsm_to_oz_yd2(get_float("GSM: ")))
+            print(f"Result = {gsm_to_oz_yd2(get_float('Enter Fabric GSM: '))} Oz/yd²")
 
         elif c == "6":
             break
@@ -311,19 +311,19 @@ def qc_menu():
         c = input("Choice: ")
 
         if c == "1":
-            o = get_float("Original: ")
-            d = get_float("Dry: ")
-            print(moisture_regain(o, d))
+            o = get_float("Enter Original Weight (g): ")
+            d = get_float("Enter Oven-Dry Weight (g): ")
+            print(f"Result = {moisture_regain(o, d)} %")
 
         elif c == "2":
-            o = get_float("Original: ")
-            f = get_float("Final: ")
-            print(shrinkage_percent(o, f))
+            o = get_float("Enter Original Length/Width (cm): ")
+            f = get_float("Enter Final Length/Width after Wash (cm): ")
+            print(f"Result = {shrinkage_percent(o, f)} %")
 
         elif c == "3":
-            w = get_float("Water: ")
-            d = get_float("Dry: ")
-            print(absorbency_rate(w, d))
+            w = get_float("Enter Absorbed Water Weight (g): ")
+            d = get_float("Enter Dry Fabric Weight (g): ")
+            print(f"Result = {absorbency_rate(w, d)} %")
 
         elif c == "4":
             break
@@ -349,24 +349,24 @@ def spinning_menu():
         choice = input("Enter choice: ")
 
         if choice == "1":
-            twist = get_float("Twist: ")
-            length = get_float("Length: ")
-            print(f"TPI = {yarn_twist_tpi(twist, length):.2f}")
+            twist = get_float("Enter Total Number of Twists: ")
+            length = get_float("Enter Sample Length (inches): ")
+            print(f"TPI = {yarn_twist_tpi(twist, length):.2f} Twist Per Inch")
 
         elif choice == "2":
-            tpi = get_float("TPI: ")
-            print(f"TPM = {yarn_tpm(tpi):.2f}")
+            tpi = get_float("Enter TPI (Twist Per Inch): ")
+            print(f"TPM = {yarn_tpm(tpi):.2f} Twist Per Meter")
 
         elif choice == "3":
-            u = get_float("U%: ")
-            thin = get_float("Thin places: ")
-            thick = get_float("Thick places: ")
-            neps = get_float("Neps: ")
-            print(f"Imperfection Index = {yarn_imperfection(u, thin, thick, neps):.2f}")
+            u = get_float("Enter U% (Evenness): ")
+            thin = get_float("Enter Thin places per km: ")
+            thick = get_float("Enter Thick places per km: ")
+            neps = get_float("Enter Neps per km: ")
+            print(f"Imperfection Index = {yarn_imperfection(u, thin, thick, neps):.2f} (IPI)")
 
         elif choice == "4":
-            actual = get_float("Actual Output: ")
-            theoretical = get_float("Theoretical Output: ")
+            actual = get_float("Enter Actual Production Output: ")
+            theoretical = get_float("Enter Theoretical Production Output: ")
             print(f"Efficiency = {spinning_efficiency(actual, theoretical):.2f}%")
 
         elif choice == "5":
@@ -389,23 +389,23 @@ def weaving_menu():
         c = input("Enter choice: ")
 
         if c == "1":
-            actual = get_float("Actual Output: ")
-            ideal = get_float("Ideal Output: ")
+            actual = get_float("Enter Actual Pick/Output: ")
+            ideal = get_float("Enter Ideal Pick/Output: ")
             print(f"Efficiency = {loom_efficiency(actual, ideal):.2f}%")
 
         elif c == "2":
-            breaks = get_float("Warp breaks: ")
-            ends = get_float("Total ends: ")
+            breaks = get_float("Enter Total Warp Breaks: ")
+            ends = get_float("Enter Total Warp Ends: ")
             print(f"Warp Break Rate = {warp_break_rate(breaks, ends):.2f}%")
 
         elif c == "3":
-            breaks = get_float("Weft breaks: ")
-            picks = get_float("Picks: ")
+            breaks = get_float("Enter Total Weft Breaks: ")
+            picks = get_float("Enter Total Picks: ")
             print(f"Weft Break Rate = {weft_break_rate(breaks, picks):.2f}%")
 
         elif c == "4":
-            defects = get_float("Defects: ")
-            length = get_float("Length: ")
+            defects = get_float("Enter Total Defects Found: ")
+            length = get_float("Enter Total Inspected Length (meters/yards): ")
             print(f"Defect Rate = {fabric_defect_rate(defects, length):.2f}%")
 
         elif c == "5":
@@ -429,23 +429,23 @@ def dyeing_advanced_menu():
         c = input("Enter choice: ")
 
         if c == "1":
-            initial = get_float("Initial dye: ")
-            remaining = get_float("Remaining dye: ")
+            initial = get_float("Enter Initial Dye Concentration: ")
+            remaining = get_float("Enter Remaining Dye in Dyebath: ")
             print(f"Exhaustion = {dye_exhaustion(initial, remaining):.2f}%")
 
         elif c == "2":
-            fixed = get_float("Fixed dye: ")
-            applied = get_float("Applied dye: ")
+            fixed = get_float("Enter Amount of Fixed Dye on Fabric: ")
+            applied = get_float("Enter Total Applied Dye: ")
             print(f"Fixation = {dye_fixation(fixed, applied):.2f}%")
 
         elif c == "3":
-            m = get_float("Material: ")
-            l = get_float("Liquor: ")
-            print(f"Liquor Ratio = {liquor_ratio(m, l):.2f}")
+            m = get_float("Enter Material Weight (g/kg): ")
+            l = get_float("Enter Total Liquor Volume (ml/L): ")
+            print(f"Liquor Ratio = 1 : {liquor_ratio(m, l):.2f}")
 
         elif c == "4":
-            a = get_float("Actual: ")
-            t = get_float("Theoretical: ")
+            a = get_float("Enter Actual Chemical Used: ")
+            t = get_float("Enter Theoretical Chemical Required: ")
             print(f"Utilization = {chemical_utilization(a, t):.2f}%")
 
         elif c == "5":
@@ -468,23 +468,23 @@ def testing_menu():
         c = input("Enter choice: ")
 
         if c == "1":
-            f = get_float("Force: ")
-            a = get_float("Area: ")
-            print(f"Tensile Strength = {tensile_strength(f, a):.2f}")
+            f = get_float("Enter Breaking Force (N/kg/lbs): ")
+            a = get_float("Enter Cross-sectional Area (mm²/cm²): ")
+            print(f"Tensile Strength = {tensile_strength(f, a):.2f} (Force per Unit Area)")
 
         elif c == "2":
-            f = get_float("Final length: ")
-            o = get_float("Original length: ")
+            f = get_float("Enter Extended/Final Length (mm/cm): ")
+            o = get_float("Enter Original Gauge Length (mm/cm): ")
             print(f"Elongation = {elongation_percent(f, o):.2f}%")
 
         elif c == "3":
-            f = get_float("Force: ")
-            a = get_float("Area: ")
+            f = get_float("Enter Pressure/Force (kPa/psi): ")
+            a = get_float("Enter Test Area: ")
             print(f"Bursting Strength = {bursting_strength(f, a):.2f}")
 
         elif c == "4":
-            loss = get_float("Loss weight: ")
-            init = get_float("Initial weight: ")
+            loss = get_float("Enter Weight Loss after Test (g): ")
+            init = get_float("Enter Initial Weight before Test (g): ")
             print(f"Abrasion Index = {abrasion_index(loss, init):.2f}%")
 
         elif c == "5":
@@ -507,24 +507,24 @@ def costing_advanced_menu():
         c = input("Enter choice: ")
 
         if c == "1":
-            cost = get_float("Total cost: ")
-            length = get_float("Length: ")
-            print(f"Cost per Meter = {cost_per_meter(cost, length):.2f}")
+            cost = get_float("Enter Total Production Cost: ")
+            length = get_float("Enter Total Produced Length (meters): ")
+            print(f"Cost per Meter = {cost_per_meter(cost, length):.2f} per meter")
 
         elif c == "2":
-            power = get_float("Power (kW): ")
-            hours = get_float("Hours: ")
-            rate = get_float("Rate: ")
-            print(f"Energy Cost = {energy_cost(power, hours, rate):.2f}")
+            power = get_float("Enter Power Consumption (kW): ")
+            hours = get_float("Enter Total Running Hours: ")
+            rate = get_float("Enter Electricity Rate per kWh: ")
+            print(f"Energy Cost = {energy_cost(power, hours, rate):.2f} (Total Energy Cost)")
 
         elif c == "3":
-            mc = get_float("Machine cost: ")
-            life = get_float("Life (years): ")
-            print(f"Depreciation = {depreciation(mc, life):.2f}")
+            mc = get_float("Enter Total Machine Purchase Cost: ")
+            life = get_float("Enter Estimated Machine Life (years): ")
+            print(f"Depreciation = {depreciation(mc, life):.2f} per year")
 
         elif c == "4":
-            sp = get_float("Selling price: ")
-            cp = get_float("Cost price: ")
+            sp = get_float("Enter Total Selling Price: ")
+            cp = get_float("Enter Total Cost Price: ")
             print(f"Profit Margin = {profit_margin(sp, cp):.2f}%")
 
         elif c == "5":
