@@ -19,7 +19,7 @@
 
 ---
 
-# 📌 About The Project
+# About The Project
 
 **Abdul-Malek** is a Python-based textile engineering library designed to simplify and automate textile-related calculations for students, researchers, and industry professionals.
 
@@ -33,7 +33,7 @@ This is currently **Version 1.00** — the beginning of a larger mission to buil
 
 ---
 
-# 🚀 Why This Project Exists
+# Why This Project Exists
 
 Traditional textile calculations can often be:
 
@@ -44,12 +44,12 @@ Traditional textile calculations can often be:
 
 **Abdul-Malek** solves this by providing:
 
-✅ Faster calculations  
-✅ Improved accuracy  
-✅ Modular structure  
-✅ Beginner-friendly design  
-✅ Expandable architecture  
-✅ Academic + Industrial utility  
+➡️ Faster calculations  
+➡️ Improved accuracy  
+➡️ Modular structure  
+➡️ Beginner-friendly design  
+➡️ Expandable architecture  
+➡️ Academic + Industrial utility  
 
 ---
 
@@ -185,7 +185,7 @@ Textile unit conversion tools
 
 ---
 
-⚡ Installation Guide
+💡Installation Guide
 
 Step 1: Clone the Repository
 
