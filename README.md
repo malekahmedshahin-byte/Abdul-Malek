@@ -8,6 +8,8 @@
 ![Field](https://img.shields.io/badge/Field-Textile%20Engineering-orange.svg)
 ![Status](https://img.shields.io/badge/Status-Active%20Development-brightgreen.svg)
 
+<img src="Images/Screenshot_2026-05-17-19-51-47-871_com.android.chrome.png">
+
 ### *Simplifying Textile Industry Calculations Through Python Automation*
 
 ### Built by Abdul Malek  
@@ -80,7 +82,7 @@ Abdul-Malek/
 
 
 ---
-<img src="Images/Screenshot_2026-05-17-19-51-47-871_com.android.chrome.png">
+
 
 🧠 Current Modules & Features
 
