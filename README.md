@@ -186,17 +186,14 @@ Textile unit conversion tools
 
 Step 1: Clone the Repository
 
-```bash
 git clone https://github.com/malekahmedshahin-byte/Abdul-Malek.git
 
 Step 2: Move Into the Project Folder
 
-```bash
 cd Abdul-Malek
 
 Step 3: Install the Library
 
-```bash
 pip install .
 
 
@@ -204,7 +201,6 @@ pip install .
 
 🛠️ Basic Usage
 
-```bash
 from textilecalc import *
 
 # Example:
