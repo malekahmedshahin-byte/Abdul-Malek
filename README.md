@@ -80,9 +80,7 @@ Abdul-Malek/
 
 
 ---
-<p align="center">
-  <img src="https://drive.google.com/file/d/1TDozhWOTfxY6t_ncXPr0GmFgL71JuMKr/view?usp=drivesdk" alt="Abdul-Malek Banner" width="100%">
-</p>
+<img src="Images/Screenshot_2026-05-17-19-51-47-871_com.android.chrome.png">
 
 🧠 Current Modules & Features
 
