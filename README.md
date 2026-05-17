@@ -287,13 +287,14 @@ This project is licensed under the MIT License.
 
 ---
 
-<div align="center">⭐ Support This Project
+<div align="center">
 
-If you find this project useful, please consider giving it a Star on GitHub.
+<h1>⭐ Support This Project</h1>
 
-“Every meaningful innovation starts with Version 1.00”
+<p>If you find this project useful, please consider giving it a <b>Star</b> on GitHub.</p>
 
-Thank you for supporting Textile Engineering + Python
+<h3>“Every meaningful innovation starts with Version 1.00”</h3>
+
+<p>Thank you for supporting Textile Engineering + Python</p>
 
 </div>
-```
