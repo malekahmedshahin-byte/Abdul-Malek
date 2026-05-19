@@ -12,3 +12,34 @@ from .weaving import *
 from .dyeing_advanced import *
 from .testing import *
 from .costing_advanced import *
+
+"""
+TextileLabPro - Research Tools Module
+This module provides:
+- Citation generators (IEEE, APA, MLA, etc.)
+- DOI-based automatic citation
+- BibTeX exporter
+"""
+
+from .citation import (
+    ieee_citation,
+    apa_citation,
+    mla_citation,
+    harvard_citation,
+    chicago_citation,
+    fetch_doi_metadata,
+    generate_citation_from_doi,
+    export_bibtex
+)
+
+
+__all__ = [
+    "ieee_citation",
+    "apa_citation",
+    "mla_citation",
+    "harvard_citation",
+    "chicago_citation",
+    "fetch_doi_metadata",
+    "generate_citation_from_doi",
+    "export_bibtex"
+]
